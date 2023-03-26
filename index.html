@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Addition</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        margin: 0 auto;
+        padding-top: 200px;
+        background-color: yellowgreen;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+      }
+      img {
+        position: absolute;
+        top: 10%;
+        left: 20%;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        opacity: 0;
+      }
+      .image-animation {
+        opacity: 1;
+        animation: anim 8s ease-in-out reverse;
+      }
+      form {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+      button {
+        width: 100%;
+        cursor: pointer;
+      }
+      .output-container {
+        margin-top: 30px;
+      }
+      .output {
+        margin-top: 10px;
+        text-align: center;
+        opacity: 1;
+        transition: 0.3s ease all;
+      }
+      .animation {
+        font-size: 50px;
+        animation: anim 8s ease-in-out;
+      }
+      .color {
+        animation: color 8s ease-in-out;
+      }
+      @keyframes anim {
+        0% {
+          transform: scale(1.1) rotate(3600000deg);
+        }
+        10% {
+          transform: scale(13) rotate(360000deg);
+        }
+        20% {
+          transform: scale(4) rotate(360000deg);
+        }
+        30% {
+          transform: scale(6) rotate(360000deg);
+        }
+        40% {
+          transform: scale(10) rotate(36000deg);
+        }
+        50% {
+          transform: scale(4) rotate(300deg);
+        }
+        60% {
+          transform: scale(6) rotate(360deg);
+        }
+        99% {
+          transform: scale(4) rotate(3600deg);
+        }
+        100% {
+          transform: scale(1) rotate(360deg);
+        }
+      }
+      @keyframes color {
+        0% {
+          background-color: red;
+        }
+        10% {
+          background-color: blue;
+        }
+        20% {
+          background-color: green;
+        }
+        30% {
+          background-color: yellow;
+        }
+        40% {
+          background-color: orange;
+        }
+        50% {
+          background-color: purple;
+        }
+        60% {
+          background-color: pink;
+        }
+        70% {
+          background-color: black;
+        }
+        80% {
+          background-color: white;
+        }
+        90% {
+          background-color: brown;
+        }
+        100% {
+          background-color: red;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Addition</h1>
+    <image src="./kr.png" />
+    <form class="form">
+      <div class="form-group">
+        <label for="num1">Number 1</label>
+        <input type="number" name="num1" id="num1" />
+      </div>
+      <div class="form-group">
+        <label for="num2">Number 2</label>
+        <input type="number" name="num2" id="num2" />
+      </div>
+      <div class="form-group">
+        <button type="submit">Add</button>
+      </div>
+    </form>
+    <div class="output-container">
+      <h2>Output</h2>
+      <p class="output"></p>
+    </div>
+    <audio class="yesyes" preload="none">
+      <source src="./dom_dom_yes_yes.mp3" type="audio/ogg" />
+    </audio>
+  </body>
+  <script>
+    const body = document.querySelector("body");
+    const num1 = document.getElementById("num1");
+    const num2 = document.getElementById("num2");
+    const form = document.querySelector(".form");
+    const output = document.querySelector(".output");
+    const audio = document.querySelector(".yesyes");
+    const image = document.querySelector("img");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const result = num1.value + num2.value;
+      const correctResult = +num1.value + +num2.value;
+      output.textContent = result;
+      output.classList.add("animation");
+      image.classList.add("image-animation");
+      body.classList.add("color");
+      audio.play();
+
+      setTimeout(() => {
+        output.textContent = correctResult;
+      }, 7500);
+      setTimeout(() => {
+        output.classList.remove("animation");
+        image.classList.remove("image-animation");
+        body.classList.remove("color");
+      }, 8000);
+    });
+  </script>
+</html>
